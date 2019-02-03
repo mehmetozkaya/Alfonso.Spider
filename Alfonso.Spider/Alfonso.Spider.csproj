@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="DotnetSpider.Core" Version="3.0.8" />
+    <PackageReference Include="DotnetSpider.Extension" Version="3.0.8" />
   </ItemGroup>
 
 </Project>
