@@ -11,11 +11,16 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            AlfonsoSpiderManager alfonsoSpiderManager = new AlfonsoSpiderManager();
+            var spider = new AlfonsoSpider();
+            spider.ThreadNum = 5;
+            spider.Run();
+            Console.Read();
 
-            //alfonsoSpiderManager.Download();
+            //AlfonsoSpiderManager alfonsoSpiderManager = new AlfonsoSpiderManager();
 
-            alfonsoSpiderManager.Spy();
+            ////alfonsoSpiderManager.Download();
+
+            //alfonsoSpiderManager.Spy();
 
             ////var site = new DotnetSpider.Core.Scheduler { CycleRetryTimes = 3, SleepTime = 300 };
             ////IScheduler asd = new QueueScheduler() { Name}
