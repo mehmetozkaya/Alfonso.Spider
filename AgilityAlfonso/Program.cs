@@ -11,11 +11,113 @@ namespace AgilityAlfonso
     {
         static void Main(string[] args)
         {
-            // From Web
-            var url = "http://html-agility-pack.net/";
-            var web = new HtmlWeb();
-            var doc = web.Load(url);
+            var html = @"https://www.expatriates.com/cls/41002766.html";
+            HtmlWeb web = new HtmlWeb();
+            var htmlDoc = web.Load(html);
 
+            var mainTitle = htmlDoc.DocumentNode.SelectSingleNode("//*[@class='page-title']//h1");
+            if (mainTitle == null) return;
+            if (mainTitle.InnerText.Trim().Contains("Page Not Found")) { Console.WriteLine("Page In Active Now"); return; }
+
+            var nodeTitle = htmlDoc.DocumentNode.SelectSingleNode("//*[@class='no-bullet']");
+
+            string sDate = string.Empty;
+            string sCategory = string.Empty;
+            string sRegion = string.Empty;
+            string sSubRegion = string.Empty;
+            string sPostingID = string.Empty;
+            string sTelephone = string.Empty;
+            string sEncodedEmail = string.Empty;
+            string sEmail = string.Empty;
+
+
+            if (nodeTitle != null && nodeTitle.HasChildNodes)
+            {
+                foreach (HtmlNode n in nodeTitle.ChildNodes)
+                {
+                    //Console.WriteLine("\r\nName: " + n.Name + " HTML: " + n.OuterHtml + " Text: " + n.InnerText );
+
+                    if (n.InnerText.Contains("Date:"))
+                    {
+                        string[] saDate = n.InnerText.Split(":".ToCharArray());
+                        if (saDate.Length == 2) { sDate = saDate[1].Trim(); }
+                    }
+                    else if (n.InnerText.Contains("Category:"))
+                    {
+                        string[] saCategory = n.InnerText.Split(":".ToCharArray());
+                        if (saCategory.Length == 2) { sCategory = saCategory[1].Trim(); }
+                    }
+
+                    else if (n.InnerText.Contains("Region:"))
+                    {
+                        string[] saRegion = n.InnerText.Split(":".ToCharArray());
+                        if (saRegion.Length == 2)
+                        {
+                            sRegion = saRegion[1].Trim().Replace("\r", "").Replace("\n", "");
+
+                            if (sRegion.Contains("(") && sRegion.Contains(")"))
+                            {
+                                sSubRegion = sRegion.Substring(sRegion.IndexOf("(") + 1, (sRegion.LastIndexOf(")") - sRegion.IndexOf("(")) - 1).Trim();
+                                sRegion = sRegion.Replace("(" + sSubRegion + ")", "");
+                            }
+                        }
+
+                    }
+                    else if (n.InnerText.Contains("Posting ID:"))
+                    {
+                        sPostingID = n.InnerText;
+                        string[] saPosting = n.InnerText.Split(":".ToCharArray());
+                        if (saPosting.Length == 2) { sPostingID = saPosting[1].Trim(); }
+                    }
+                    else if (n.OuterHtml.Contains("tel:"))
+                    {
+                        sTelephone = n.InnerText.Trim();
+                    }
+                    else if (n.InnerText.Contains("From:"))
+                    {
+                        var emailNode = n.SelectSingleNode("//*[@class='__cf_email__']");
+                        if (emailNode != null)
+                        {
+                            foreach (HtmlAttribute attribute in emailNode.Attributes)
+                            {
+                                if (attribute.Name.Contains("data-cfemail"))
+                                {
+                                    sEncodedEmail = attribute.Value;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            Console.WriteLine("\nDate: " + sDate);
+            Console.WriteLine("\nCategory: " + sCategory);
+            Console.WriteLine("\nRegion: " + sRegion);
+            Console.WriteLine("\nSub Region: " + sSubRegion);
+            Console.WriteLine("\nPostingID: " + sPostingID);
+            Console.WriteLine("\nTelephone: " + sTelephone);
+
+
+
+            //// From Web
+            //var url = "http://html-agility-pack.net/";
+            //var web = new HtmlWeb();
+            //var doc = web.Load(url);
+
+            //var node = doc.DocumentNode.SelectSingleNode("//head/title");
+            //var div = doc.GetElementbyId("foo");
+
+            //// With XPath 
+            //var value = doc.DocumentNode
+            // .SelectNodes("//td/input")
+            // .First()
+            // .Attributes["value"].Value;
+
+            //// With LINQ 
+            //var nodes = doc.DocumentNode.Descendants("input")
+            // .Select(y => y.Descendants()
+            // .Where(x => x.Attributes["class"].Value == "box"))
+            // .ToList();
 
         }
     }
