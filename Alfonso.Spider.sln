@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alfonso.Spider", "Alfonso.Spider\Alfonso.Spider.csproj", "{C434D33B-ED86-4DFB-9A75-B5946C85C2DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alfonso.Spider", "Alfonso.Spider\Alfonso.Spider.csproj", "{C434D33B-ED86-4DFB-9A75-B5946C85C2DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{690ED84A-FF30-45EC-8890-C6CCD3B4DEA0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{690ED84A-FF30-45EC-8890-C6CCD3B4DEA0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgilityAlfonso", "AgilityAlfonso\AgilityAlfonso.csproj", "{D8B7FCFE-C009-4ABA-BBB8-5FAC44FAF520}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{690ED84A-FF30-45EC-8890-C6CCD3B4DEA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{690ED84A-FF30-45EC-8890-C6CCD3B4DEA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{690ED84A-FF30-45EC-8890-C6CCD3B4DEA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8B7FCFE-C009-4ABA-BBB8-5FAC44FAF520}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8B7FCFE-C009-4ABA-BBB8-5FAC44FAF520}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8B7FCFE-C009-4ABA-BBB8-5FAC44FAF520}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8B7FCFE-C009-4ABA-BBB8-5FAC44FAF520}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

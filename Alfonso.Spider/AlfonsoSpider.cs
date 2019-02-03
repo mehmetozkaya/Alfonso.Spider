@@ -16,13 +16,13 @@ namespace Alfonso.Spider
 
         protected override void OnInit(params string[] arguments)
         {
-            var word = "araba";
+            var word = "car";
             var constr = "Server=(localdb)\\mssqllocaldb;Integrated Security=true;Initial Catalog=baidu;";
 
 
             AddRequest(string.Format("http://news.baidu.com/ns?word={0}&tn=news&from=news&cl=2&pn=0&rn=20&ct=1", word), new Dictionary<string, dynamic> { { "Keyword", word } });
             AddEntityType<BaiduSearchEntry>();
-            AddPipeline(new SqlServerEntityPipeline());
+            AddPipeline(new SqlServerEntityPipeline(constr));
             //AddPipeline(new ConsoleEntityPipeline());
         }
     }
