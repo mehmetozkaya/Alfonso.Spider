@@ -11,6 +11,41 @@ namespace AgilityAlfonso
     {
         static void Main(string[] args)
         {
+            var url = "";
+            var doc = new HtmlWeb().Load(url);
+            var phoneList = doc.DocumentNode.SelectSingleNode("//*[@id='listele']/div[3]");
+
+            
+
+            foreach (HtmlNode phone in phoneList.ChildNodes)
+            {
+                if (phone.Name != "ul")
+                    continue;
+                
+                var phoneName = phone.SelectSingleNode("//*[@id='125051']/li[1]/div[2]/a");
+
+                var nodeUrun = phone.QuerySelector("\\31 25051 > li.fiyat.cell > a");
+                var fiyat = phone.QuerySelector("#li.fiyat.cell>a");
+
+                var ozellikNodes = phone.SelectNodes("//*[@id='125051']/li");
+
+                foreach (var item in ozellikNodes)
+                {
+                    var asd = item.InnerText;
+                }
+                //*[@id="125051"]/li[2]
+                //*[@id="125051"]/li[3]
+                //*[@id="125051"]/li[4]
+
+                //if(phone.Attributes["class"].Value == "metin row")
+                //{
+
+                //}
+
+
+            }
+
+
             var html = @"https://www.expatriates.com/cls/41002766.html";
             HtmlWeb web = new HtmlWeb();
             var htmlDoc = web.Load(html);
