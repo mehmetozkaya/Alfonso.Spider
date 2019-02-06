@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="Crawler\IAlfonsoCrawler.cs" />
     <Compile Include="Downloader\IAlfonsoDownloader.cs" />
+    <Compile Include="Pipeline\IAlfonsoPipeline.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
