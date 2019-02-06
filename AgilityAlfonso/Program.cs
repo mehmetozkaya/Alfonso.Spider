@@ -11,7 +11,7 @@ namespace AgilityAlfonso
     {
         static void Main(string[] args)
         {
-            var url = "";
+            var url = @"https://www.epey.com/akilli-telefonlar/";
             var doc = new HtmlWeb().Load(url);
             var phoneList = doc.DocumentNode.SelectSingleNode("//*[@id='listele']/div[3]");
 
